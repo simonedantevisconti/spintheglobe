@@ -30,7 +30,9 @@ const CountryModal = ({ show, onHide, country }) => {
                   className="country-image"
                 />
               ) : (
-                <div className="country-image-placeholder">Spazio foto</div>
+                <div className="country-image-placeholder">
+                  Nessuna immagine disponibile
+                </div>
               )}
             </div>
           </div>

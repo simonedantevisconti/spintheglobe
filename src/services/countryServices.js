@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const getCountryDetails = async (name) => {
+export const getCountryDetails = async (code, name) => {
   const response = await axios.get(
     "http://localhost:5000/api/countries/details",
     {
-      params: { name },
+      params: { code, name },
     },
   );
 

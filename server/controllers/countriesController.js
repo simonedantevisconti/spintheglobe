@@ -2,15 +2,15 @@ const { fetchCountryDetails } = require("../service/countryService");
 
 const getCountryDetails = async (req, res) => {
   try {
-    const { name } = req.query;
+    const { code, name } = req.query;
 
-    if (!name) {
+    if (!code && !name) {
       return res.status(400).json({
-        message: "Nome nazione mancante",
+        message: "Codice o nome nazione mancante",
       });
     }
 
-    const country = await fetchCountryDetails(name);
+    const country = await fetchCountryDetails(code, name);
     return res.json(country);
   } catch (error) {
     console.error("Errore controller country:", error.message);

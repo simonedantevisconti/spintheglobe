@@ -1,22 +1,35 @@
-const axios = require("axios");
+const path = require("path");
+const countriesData = require(
+  path.join(__dirname, "../../src/data/countries.json"),
+);
 
-const fetchCountryDetails = async (name) => {
-  const response = await axios.get(
-    `https://restcountries.com/v3.1/name/${encodeURIComponent(name)}`,
-  );
+const getFallbackTitle = (code, name) => {
+  if (name) return name;
+  if (code) return code.toUpperCase();
+  return "Nazione selezionata";
+};
 
-  const country = Array.isArray(response.data)
-    ? response.data[0]
-    : response.data;
+const fetchCountryDetails = async (code, name) => {
+  const normalizedCode = String(code || "")
+    .trim()
+    .toLowerCase();
+
+  const localCountry = countriesData[normalizedCode];
+
+  if (!localCountry) {
+    return {
+      title: getFallbackTitle(code, name),
+      description: "Descrizione non disponibile per questa nazione.",
+      image: "",
+      images: [],
+    };
+  }
 
   return {
-    title: country?.name?.common || name || "Nazione selezionata",
-    description: `Capitale: ${country?.capital?.[0] || "N/D"}. Regione: ${
-      country?.region || "N/D"
-    }. Popolazione: ${
-      country?.population?.toLocaleString?.("it-IT") || "N/D"
-    }.`,
-    image: country?.flags?.png || "",
+    title: localCountry.name || getFallbackTitle(code, name),
+    description: localCountry.description || "Descrizione non disponibile.",
+    image: localCountry.images?.[0] || "",
+    images: Array.isArray(localCountry.images) ? localCountry.images : [],
   };
 };
 

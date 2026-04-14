@@ -49,6 +49,16 @@ const getCountryName = (polygon) => {
   );
 };
 
+const getCountryCode = (polygon) => {
+  return (
+    polygon?.properties?.iso_a2 ||
+    polygon?.properties?.ISO_A2 ||
+    polygon?.properties?.iso2 ||
+    polygon?.properties?.ISO2 ||
+    ""
+  );
+};
+
 const GlobeViewer = ({
   isSpinning,
   pin,
@@ -85,7 +95,6 @@ const GlobeViewer = ({
     controls.autoRotateSpeed = 50;
     controls.enablePan = false;
 
-    // blocca completamente la rotazione quando OFF
     if (!isSpinning) {
       controls.autoRotate = false;
     }
@@ -129,10 +138,12 @@ const GlobeViewer = ({
         }}
         onPolygonClick={(polygon) => {
           const countryName = getCountryName(polygon);
+          const countryCode = getCountryCode(polygon);
           const center = getPolygonCenter(polygon?.geometry);
 
           onCountryClick({
             countryName,
+            countryCode,
             lat: center.lat,
             lng: center.lng,
           });

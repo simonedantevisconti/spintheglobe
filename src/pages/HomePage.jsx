@@ -17,7 +17,7 @@ const HomePage = () => {
     setIsSpinning((prev) => !prev);
   };
 
-  const handleCountryClick = async ({ countryName, lat, lng }) => {
+  const handleCountryClick = async ({ countryName, countryCode, lat, lng }) => {
     try {
       setLoading(true);
 
@@ -25,7 +25,7 @@ const HomePage = () => {
       setSelectedCountryName(countryName || "");
       setPin({ lat, lng });
 
-      const countryData = await getCountryDetails(countryName);
+      const countryData = await getCountryDetails(countryCode, countryName);
 
       setSelectedCountry(countryData);
       setShowModal(true);
@@ -37,6 +37,7 @@ const HomePage = () => {
         description:
           "Non sono riuscito a recuperare i dettagli di questa nazione.",
         image: "",
+        images: [],
       });
 
       setShowModal(true);
