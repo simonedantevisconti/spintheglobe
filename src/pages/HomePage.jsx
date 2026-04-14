@@ -6,7 +6,7 @@ import CountryModal from "../components/CountryModal";
 import { getCountryDetails } from "../services/countryServices";
 
 const HomePage = () => {
-  const [isSpinning, setIsSpinning] = useState(true);
+  const [isSpinning, setIsSpinning] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedCountryName, setSelectedCountryName] = useState("");
   const [showModal, setShowModal] = useState(false);

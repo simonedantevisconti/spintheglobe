@@ -80,9 +80,15 @@ const GlobeViewer = ({
     globeRef.current.pointOfView({ altitude: 2.1 });
 
     const controls = globeRef.current.controls();
+
     controls.autoRotate = isSpinning;
     controls.autoRotateSpeed = 50;
     controls.enablePan = false;
+
+    // blocca completamente la rotazione quando OFF
+    if (!isSpinning) {
+      controls.autoRotate = false;
+    }
   }, [isSpinning]);
 
   const pointsData = useMemo(() => {
