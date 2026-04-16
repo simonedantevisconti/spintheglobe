@@ -1,0 +1,153 @@
+.country-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+.country-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  background: linear-gradient(180deg, #f8fcff 0%, #eef7f6 100%);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.country-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.country-modal-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.country-modal-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.country-image-box {
+  width: 100%;
+}
+
+.country-image,
+.country-image-placeholder {
+  width: 100%;
+  min-height: 260px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.country-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dde8ef;
+  color: #4d5b68;
+  font-weight: 700;
+}
+
+.country-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.65);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+  z-index: 2;
+}
+
+.carousel-arrow:hover {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.carousel-arrow-left {
+  left: 12px;
+}
+
+.carousel-arrow-right {
+  right: 12px;
+}
+
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.carousel-dot.active {
+  background: #ffffff;
+  transform: scale(1.15);
+}
+
+@media (max-width: 767px) {
+  .country-modal-box {
+    padding: 1.5rem;
+  }
+
+  .country-modal-title {
+    font-size: 1.6rem;
+  }
+
+  .carousel-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+  }
+
+  .carousel-arrow-left {
+    left: 10px;
+  }
+
+  .carousel-arrow-right {
+    right: 10px;
+  }
+}

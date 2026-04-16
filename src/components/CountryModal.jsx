@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import "../styles/countrymodal.css";
 
 const CountryModal = ({ show, onHide, country }) => {
   const images = useMemo(() => {
