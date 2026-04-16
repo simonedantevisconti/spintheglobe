@@ -4,6 +4,7 @@ import GlobeViewer from "../components/GlobeViewer";
 import SpinButton from "../components/SpinButton";
 import CountryModal from "../components/CountryModal";
 import { getCountryDetails } from "../services/countryServices";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -118,6 +119,8 @@ const HomePage = () => {
         onHide={handleCloseModal}
         country={selectedCountry}
       />
+
+      <Footer />
     </div>
   );
 };

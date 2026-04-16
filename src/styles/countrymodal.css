@@ -1,44 +1,80 @@
 .country-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  z-index: 9999;
+  padding: 1.25rem;
+  background: rgba(14, 7, 34, 0.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .country-modal-box {
   position: relative;
   width: 100%;
-  max-width: 920px;
-  background: linear-gradient(180deg, #f8fcff 0%, #eef7f6 100%);
-  border-radius: 24px;
+  max-width: 940px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
   padding: 2rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  background: linear-gradient(
+    180deg,
+    rgba(56, 31, 110, 0.96) 0%,
+    rgba(31, 16, 70, 0.98) 100%
+  );
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(255, 78, 205, 0.08);
+  color: #ffffff;
 }
 
 .country-modal-close {
   position: absolute;
   top: 14px;
   right: 16px;
+  width: 42px;
+  height: 42px;
   border: none;
-  background: transparent;
-  font-size: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.country-modal-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: scale(1.04);
 }
 
 .country-modal-title {
-  font-size: 2rem;
   margin-bottom: 1rem;
+  padding-right: 3rem;
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.35rem;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  text-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.15),
+    0 0 14px rgba(255, 78, 205, 0.14);
 }
 
 .country-modal-text {
-  font-size: 1rem;
-  line-height: 1.7;
   margin-bottom: 0;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .country-image-box {
@@ -47,19 +83,30 @@
 
 .country-image,
 .country-image-placeholder {
+  display: block;
   width: 100%;
-  min-height: 260px;
-  border-radius: 20px;
+  min-height: 320px;
+  border-radius: 22px;
   object-fit: cover;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.country-image {
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.24),
+    0 0 12px rgba(77, 184, 255, 0.08);
 }
 
 .country-image-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #dde8ef;
-  color: #4d5b68;
-  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
 }
 
 .country-carousel {
@@ -70,53 +117,54 @@
 .carousel-arrow {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(15, 23, 42, 0.65);
-  color: #fff;
-  font-size: 1.8rem;
-  line-height: 1;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff4ecd 0%, #a44dff 100%);
+  color: #ffffff;
+  font-size: 1.55rem;
+  line-height: 1;
   cursor: pointer;
+  transform: translateY(-50%);
+  box-shadow: 0 10px 22px rgba(164, 77, 255, 0.28);
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-  z-index: 2;
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 .carousel-arrow:hover {
-  background: rgba(15, 23, 42, 0.85);
+  filter: brightness(1.08);
 }
 
 .carousel-arrow-left {
-  left: 12px;
+  left: 14px;
 }
 
 .carousel-arrow-right {
-  right: 12px;
+  right: 14px;
 }
 
 .carousel-dots {
   position: absolute;
   left: 50%;
-  bottom: 14px;
-  transform: translateX(-50%);
+  bottom: 16px;
+  z-index: 2;
   display: flex;
   gap: 8px;
-  z-index: 2;
+  transform: translateX(-50%);
 }
 
 .carousel-dot {
   width: 10px;
   height: 10px;
   border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.38);
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -124,23 +172,41 @@
 }
 
 .carousel-dot.active {
-  background: #ffffff;
+  background: #49d4ff;
+  box-shadow: 0 0 12px rgba(73, 212, 255, 0.65);
   transform: scale(1.15);
 }
 
 @media (max-width: 767px) {
+  .country-modal-overlay {
+    padding: 1rem;
+  }
+
   .country-modal-box {
-    padding: 1.5rem;
+    padding: 1.35rem;
+    border-radius: 22px;
   }
 
   .country-modal-title {
-    font-size: 1.6rem;
+    padding-right: 2.5rem;
+    font-size: 1.85rem;
+  }
+
+  .country-modal-text {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .country-image,
+  .country-image-placeholder {
+    min-height: 250px;
+    border-radius: 18px;
   }
 
   .carousel-arrow {
     width: 38px;
     height: 38px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .carousel-arrow-left {
